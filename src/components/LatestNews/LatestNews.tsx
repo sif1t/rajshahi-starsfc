@@ -5,7 +5,7 @@ const newsItems = [
   {
     id: 1,
     category: "Championship",
-    title: "Rajshahi Stars FC crowned SAFF Women's Futsal Champions 2026",
+    title: "Rajshahi Stars FC crowned Women's Football League (WFL) Champions 2026",
     date: "15 Jun 2026",
     author: "Club Media",
     image: "/images/news/news-1.jpg",

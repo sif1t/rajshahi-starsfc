@@ -87,7 +87,7 @@ export default function Footer() {
                 </div>
               </div>
               <p className={styles.brandDesc}>
-                Rajshahi Stars FC is Bangladesh&apos;s premier women&apos;s football club, committed to excellence, community, and the beautiful game. Champions of the SAFF Women&apos;s Futsal Championship 2026.
+                Rajshahi Stars FC is Bangladesh&apos;s premier women&apos;s football club, committed to excellence, community, and the beautiful game. Champions of the Women&apos;s Football League (WFL) 2026.
               </p>
               <div className={styles.socialLinks}>
                 {socialLinks.map((s) => (

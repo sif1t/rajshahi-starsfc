@@ -94,7 +94,7 @@ export default function Hero() {
       {/* Hero Content */}
       <div className={styles.heroContent} ref={textRef}>
         <div className={styles.heroBadge}>
-          <span className={styles.liveTag}>⚡ SAFF Women&apos;s Futsal Champions 2026</span>
+          <span className={styles.liveTag}>⚡ Women&apos;s Football League (WFL)</span>
         </div>
 
         <h1 className={`${styles.heroTitle} ${loaded ? styles.titleLoaded : ""}`}>

@@ -4,9 +4,9 @@ import { useState, useEffect, useRef } from "react";
 import styles from "./MatchStrip.module.css";
 
 const fixtures = [
-  { home: "Rajshahi Stars FC", away: "Dhaka FC", date: "25 Jun 2026", time: "18:00", competition: "BFF Women's League", venue: "Birshreshtha Shaheed Mostafa Kamal Stadium" },
-  { home: "Chittagong Women FC", away: "Rajshahi Stars FC", date: "2 Jul 2026", time: "16:00", competition: "BFF Women's League", venue: "Chittagong Stadium" },
-  { home: "Rajshahi Stars FC", away: "Sylhet Queens", date: "9 Jul 2026", time: "18:00", competition: "BFF Women's League", venue: "Rajshahi Stadium" },
+  { home: "Rajshahi Stars FC", away: "Dhaka FC", date: "25 Jun 2026", time: "18:00", competition: "Women's Football League (WFL)", venue: "Birshreshtha Shaheed Mostafa Kamal Stadium" },
+  { home: "Chittagong Women FC", away: "Rajshahi Stars FC", date: "2 Jul 2026", time: "16:00", competition: "Women's Football League (WFL)", venue: "Chittagong Stadium" },
+  { home: "Rajshahi Stars FC", away: "Sylhet Queens", date: "9 Jul 2026", time: "18:00", competition: "Women's Football League (WFL)", venue: "Rajshahi Stadium" },
 ];
 
 const latestResult = {
@@ -15,7 +15,7 @@ const latestResult = {
   homeScore: 3,
   away: "Mymensingh FC",
   awayScore: 1,
-  competition: "SAFF Women's Futsal Championship 2026 · Final",
+  competition: "Women's Football League (WFL) · Final",
   date: "15 Jun 2026",
 };
 
