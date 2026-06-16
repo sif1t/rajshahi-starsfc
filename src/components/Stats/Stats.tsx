@@ -4,10 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./Stats.module.css";
 
 const stats = [
-  { value: 87, suffix: "%", label: "Win Rate", icon: "🏆" },
-  { value: 156, suffix: "+", label: "Goals Scored", icon: "⚽" },
-  { value: 12, suffix: "", label: "Trophies Won", icon: "🥇" },
-  { value: 25, suffix: "+", label: "Players in Squad", icon: "👟" },
+  { value: 100, suffix: "%", label: "Win Rate", icon: "🏆" },
+  { value: 98, suffix: "+", label: "Goals Scored", icon: "⚽" },
+  { value: 1, suffix: "", label: "Trophies Won", icon: "🥇" },
+  { value: 30, suffix: "+", label: "Players in Squad", icon: "👟" },
 ];
 
 function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
