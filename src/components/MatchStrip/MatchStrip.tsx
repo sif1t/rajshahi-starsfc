@@ -13,8 +13,8 @@ const latestResult = {
   home: "Rajshahi Stars FC",
   homeLogo: "/images/logo.png",
   homeScore: 3,
-  away: "Mymensingh FC",
-  awayScore: 1,
+  away: "Bangladesh Armmy FC",
+  awayScore: 0,
   competition: "Women's Football League (WFL) · Final",
   date: "15 Jun 2026",
 };
