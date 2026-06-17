@@ -6,12 +6,12 @@ import Image from "next/image";
 import styles from "./Navbar.module.css";
 
 const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "First Team", href: "#squad" },
-  { label: "Matches", href: "#matches" },
-  { label: "News", href: "#news" },
-  { label: "Club", href: "#club" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "First Team", href: "/#squad" },
+  { label: "Matches", href: "/#matches" },
+  { label: "News", href: "/#news" },
+  { label: "Club", href: "/#club" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -65,7 +65,7 @@ export default function Navbar() {
             <ul className={styles.navList}>
               {navLinks.map((link) => (
                 <li key={link.label}>
-                  <a
+                  <Link
                     href={link.href}
                     className={`${styles.navLink} ${
                       activeLink === link.label ? styles.active : ""
@@ -73,7 +73,7 @@ export default function Navbar() {
                     onClick={() => setActiveLink(link.label)}
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -115,7 +115,7 @@ export default function Navbar() {
                 style={{ animationDelay: `${i * 0.06}s` }}
                 className={menuOpen ? styles.mobileItemVisible : ""}
               >
-                <a
+                <Link
                   href={link.href}
                   className={styles.mobileNavLink}
                   onClick={() => {
@@ -125,7 +125,7 @@ export default function Navbar() {
                 >
                   <span className={styles.mobileNavNum}>{String(i + 1).padStart(2, "0")}</span>
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
