@@ -38,7 +38,17 @@ const contactInfo = [
     ),
     label: "Support Email",
     value: "rajshahiwarriors.bpl@gmail.com",
-    href: "rajshahiwarriors.bpl@gmail.com",
+    href: "mailto:rajshahiwarriors.bpl@gmail.com",
+  },
+  {
+    icon: (
+      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M6.62 10.79a15.15 15.15 0 006.29 6.29l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+      </svg>
+    ),
+    label: "Phone Number",
+    value: "+880 1712-345678",
+    href: "tel:+8801712345678",
   },
 ];
 
@@ -96,7 +106,7 @@ const subjects = [
 type FormState = { name: string; email: string; subject: string; message: string };
 type FormStatus = "idle" | "sending" | "success" | "error";
 
-/* ─── Floating-label input ───────────────────────── */
+/* ─── Floating-label inputs ───────────────────────── */
 function FloatingInput({
   id, label, type = "text", value, onChange, required, autoComplete,
 }: {
@@ -113,21 +123,20 @@ function FloatingInput({
         onChange={(e) => onChange(e.target.value)}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
-        style={{ background: "rgba(10,27,61,0.8)" }}
         className={[
-          "w-full border rounded-lg px-4 pt-6 pb-2 text-white text-sm outline-none",
-          "transition-all duration-200 placeholder-transparent",
+          "w-full bg-[#152036] border border-white/10 rounded-lg px-4 pt-7 pb-3 text-white text-sm outline-none",
+          "transition-all duration-300 placeholder-transparent",
           focused
-            ? "border-[#FF6B00] ring-2 ring-[#FF6B00]/25 shadow-[0_0_0_4px_rgba(255,107,0,0.10)]"
-            : "border-white/10 hover:border-white/20",
+            ? "border-[#FF5A00] ring-2 ring-[#FF5A00]/30 shadow-[0_0_0_4px_rgba(255,90,0,0.10)]"
+            : "hover:border-white/20",
         ].join(" ")}
       />
       <label
         htmlFor={id}
         className={[
-          "absolute left-4 pointer-events-none transition-all duration-200 select-none",
-          lifted ? "top-[7px] text-[0.64rem] font-bold tracking-widest uppercase" : "top-1/2 -translate-y-1/2 text-sm",
-          focused ? "text-[#FF6B00]" : "text-white/35",
+          "absolute left-4 pointer-events-none transition-all duration-300 select-none",
+          lifted ? "top-[8px] text-[0.65rem] font-bold tracking-wider uppercase" : "top-1/2 -translate-y-1/2 text-sm",
+          focused ? "text-[#FF5A00]" : "text-white/35",
         ].join(" ")}
       >
         {label}
@@ -148,24 +157,24 @@ function FloatingTextarea({
     <div className="relative w-full">
       <textarea
         id={id} value={value} rows={rows} required={required}
-        placeholder=" " style={{ background: "rgba(10,27,61,0.8)" }}
+        placeholder=" "
         onChange={(e) => onChange(e.target.value)}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
         className={[
-          "w-full border rounded-lg px-4 pt-7 pb-3 text-white text-sm resize-none outline-none",
-          "transition-all duration-200 placeholder-transparent",
+          "w-full bg-[#152036] border border-white/10 rounded-lg px-4 pt-7 pb-3 text-white text-sm resize-none outline-none",
+          "transition-all duration-300 placeholder-transparent",
           focused
-            ? "border-[#FF6B00] ring-2 ring-[#FF6B00]/25 shadow-[0_0_0_4px_rgba(255,107,0,0.10)]"
-            : "border-white/10 hover:border-white/20",
+            ? "border-[#FF5A00] ring-2 ring-[#FF5A00]/30 shadow-[0_0_0_4px_rgba(255,90,0,0.10)]"
+            : "hover:border-white/20",
         ].join(" ")}
       />
       <label
         htmlFor={id}
         className={[
-          "absolute left-4 pointer-events-none transition-all duration-200 select-none",
-          lifted ? "top-[7px] text-[0.64rem] font-bold tracking-widest uppercase" : "top-4 text-sm",
-          focused ? "text-[#FF6B00]" : "text-white/35",
+          "absolute left-4 pointer-events-none transition-all duration-300 select-none",
+          lifted ? "top-[8px] text-[0.65rem] font-bold tracking-wider uppercase" : "top-5 text-sm",
+          focused ? "text-[#FF5A00]" : "text-white/35",
         ].join(" ")}
       >
         {label}
@@ -189,27 +198,28 @@ function FloatingSelect({
         onChange={(e) => onChange(e.target.value)}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
-        style={{ background: "rgba(10,27,61,0.8)" }}
         className={[
-          "w-full border rounded-lg px-4 pt-6 pb-2 text-white text-sm outline-none",
-          "transition-all duration-200 appearance-none cursor-pointer",
-          !lifted ? "text-transparent" : "",
+          "w-full bg-[#152036] border border-white/10 rounded-lg px-4 pt-7 pb-3 text-sm outline-none",
+          "transition-all duration-300 appearance-none cursor-pointer",
+          !value ? "text-transparent" : "text-white",
           focused
-            ? "border-[#FF6B00] ring-2 ring-[#FF6B00]/25 shadow-[0_0_0_4px_rgba(255,107,0,0.10)]"
-            : "border-white/10 hover:border-white/20",
+            ? "border-[#FF5A00] ring-2 ring-[#FF5A00]/30 shadow-[0_0_0_4px_rgba(255,90,0,0.10)]"
+            : "hover:border-white/20",
         ].join(" ")}
       >
-        <option value="" disabled style={{ background: "#0A1B3D", color: "rgba(255,255,255,0.35)" }}>{label}</option>
+        <option value="" disabled></option>
         {options.map((o) => (
-          <option key={o} value={o} style={{ background: "#0A1B3D", color: "white" }}>{o}</option>
+          <option key={o} value={o} className="bg-[#0A1B3D] text-white">
+            {o}
+          </option>
         ))}
       </select>
       <label
         htmlFor={id}
         className={[
-          "absolute left-4 pointer-events-none transition-all duration-200 select-none",
-          lifted ? "top-[7px] text-[0.64rem] font-bold tracking-widest uppercase" : "top-1/2 -translate-y-1/2 text-sm",
-          focused ? "text-[#FF6B00]" : "text-white/35",
+          "absolute left-4 pointer-events-none transition-all duration-300 select-none",
+          lifted ? "top-[8px] text-[0.65rem] font-bold tracking-wider uppercase" : "top-1/2 -translate-y-1/2 text-sm",
+          focused ? "text-[#FF5A00]" : "text-white/35",
         ].join(" ")}
       >
         {label}
@@ -245,24 +255,16 @@ export default function ContactPage() {
       <Navbar />
 
       {/* ── Page wrapper — pushes below fixed navbar ── */}
-      <div style={{ background: "var(--primary)", minHeight: "100vh" }}>
+      <div className="bg-[#0A1B3D] min-h-screen">
 
         {/* ── Hero strip ──────────────────────────── */}
-        <div
-          className="relative overflow-hidden"
-          style={{
-            background: "var(--primary-mid)",
-            paddingTop: "120px",
-            paddingBottom: "3rem",
-          }}
-        >
+        <div className="relative overflow-hidden bg-[#132050] pt-[120px] pb-12">
           {/* Subtle radial glow */}
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0"
             style={{
-              background:
-                "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(255,107,0,0.10) 0%, transparent 70%)",
+              background: "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(255,90,0,0.10) 0%, transparent 70%)",
             }}
           />
           {/* Thin diagonal stripes */}
@@ -276,27 +278,27 @@ export default function ContactPage() {
             ))}
           </div>
 
-          <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: EASE }}
             >
               {/* Tag line */}
-              <p className="flex items-center gap-2 mb-3 text-[#FF6B00] text-xs font-bold tracking-[0.22em] uppercase">
-                <span className="inline-block w-6 h-px bg-[#FF6B00]" />
+              <p className="flex items-center gap-2 mb-3 text-[#FF5A00] text-xs font-bold tracking-[0.22em] uppercase">
+                <span className="inline-block w-6 h-px bg-[#FF5A00]" />
                 Get in touch
               </p>
 
               {/* Page title */}
               <h1
-                className="text-white leading-none mb-3"
+                className="text-white leading-none mb-3 uppercase"
                 style={{
                   fontFamily: "var(--font-display, 'Bebas Neue', sans-serif)",
                   fontSize: "clamp(2.4rem, 5vw, 4.5rem)",
                 }}
               >
-                Contact <span style={{ color: "var(--accent, #FF6B00)" }}>Us</span>
+                CONTACT <span className="text-[#FF5A00]">US</span>
               </h1>
 
               {/* Subtitle */}
@@ -312,52 +314,51 @@ export default function ContactPage() {
         </div>
 
         {/* ── Two-column body ─────────────────────── */}
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-[22rem_minmax(0,1fr)] gap-10 xl:gap-14 items-start">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
 
             {/* ── LEFT: Info column ────────────────── */}
             <motion.aside
               variants={stagger}
               initial="hidden"
               animate="show"
-              className="space-y-3"
+              className="space-y-8"
             >
               {/* Info cards */}
-              {contactInfo.map((item) => (
-                <motion.a
-                  key={item.label}
-                  href={item.href}
-                  target={item.href.startsWith("http") ? "_blank" : undefined}
-                  rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  variants={itemUp}
-                  whileHover={{ x: 5 }}
-                  className="group flex items-start gap-4 p-4 sm:p-5 rounded-xl border border-white/8 transition-colors duration-200 cursor-pointer"
-                  style={{ background: "rgba(255,255,255,0.025)" }}
-                >
-                  {/* Icon bubble */}
-                  <div
-                    className="flex-shrink-0 mt-0.5 w-10 h-10 rounded-lg flex items-center justify-center text-[#FF6B00] transition-all duration-200 group-hover:bg-[#FF6B00] group-hover:text-white"
-                    style={{ background: "rgba(255,107,0,0.10)" }}
+              <div className="space-y-6">
+                {contactInfo.map((item) => (
+                  <motion.a
+                    key={item.label}
+                    href={item.href}
+                    target={item.href.startsWith("http") ? "_blank" : undefined}
+                    rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    variants={itemUp}
+                    className="group flex items-start gap-4 p-5 rounded-xl border border-white/5 bg-white/5 transition-all duration-300 hover:border-white/10 hover:bg-white/10 cursor-pointer"
                   >
-                    {item.icon}
-                  </div>
-                  <div className="min-w-0">
-                    <p className="text-[0.65rem] font-bold tracking-[0.18em] uppercase text-white/40 mb-1">
-                      {item.label}
-                    </p>
-                    <p className="text-white text-sm leading-relaxed break-words whitespace-pre-line">
-                      {item.value}
-                    </p>
-                  </div>
-                </motion.a>
-              ))}
+                    {/* Icon bubble */}
+                    <div
+                      className="flex-shrink-0 mt-0.5 w-10 h-10 rounded-lg flex items-center justify-center text-[#FF5A00] bg-[#FF5A00]/10 transition-all duration-300 group-hover:bg-[#FF5A00] group-hover:text-white"
+                    >
+                      {item.icon}
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-[0.65rem] font-bold tracking-[0.18em] uppercase text-white/40 mb-1">
+                        {item.label}
+                      </p>
+                      <p className="text-white text-sm leading-relaxed break-words whitespace-pre-line">
+                        {item.value}
+                      </p>
+                    </div>
+                  </motion.a>
+                ))}
+              </div>
 
-              {/* Divider */}
-              <motion.div variants={itemUp} className="border-t border-white/8 pt-6">
+              {/* Divider and Follow Us */}
+              <motion.div variants={itemUp} className="border-t border-white/10 pt-8">
                 <p className="text-[0.65rem] font-bold tracking-[0.18em] uppercase text-white/40 mb-4">
                   Follow Us
                 </p>
-                <div className="flex gap-2 flex-wrap">
+                <div className="flex gap-3 flex-wrap">
                   {socialLinks.map((s, i) => (
                     <motion.a
                       key={s.name}
@@ -365,9 +366,7 @@ export default function ContactPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={s.name}
-                      id={`contact-social-${s.name.toLowerCase().replace("/", "-")}`}
-                      className="w-10 h-10 rounded-xl border border-white/10 flex items-center justify-center text-white/45 hover:bg-[#FF6B00] hover:border-[#FF6B00] hover:text-white transition-all duration-200"
-                      style={{ background: "rgba(255,255,255,0.03)" }}
+                      className="w-10 h-10 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center text-white/45 hover:bg-[#FF5A00] hover:border-[#FF5A00] hover:text-white transition-all duration-300"
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{
                         opacity: 1, scale: 1,
@@ -381,30 +380,6 @@ export default function ContactPage() {
                   ))}
                 </div>
               </motion.div>
-
-              {/* Stylised map card */}
-              <motion.div
-                variants={itemUp}
-                className="rounded-xl overflow-hidden border border-white/8 relative"
-                style={{ height: 160, background: "linear-gradient(135deg,#0f2045,#162a60,#132050)" }}
-              >
-                {/* Ping dot */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="relative">
-                    <div className="w-3 h-3 rounded-full bg-[#FF6B00] relative z-10" />
-                    <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full border-2 border-[#FF6B00]/40 animate-ping" />
-                    <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full border border-[#FF6B00]/15" />
-                  </div>
-                </div>
-                <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-[#0A1B3D] to-transparent">
-                  <p className="text-white/55 text-xs flex items-center gap-2">
-                    <svg className="w-3.5 h-3.5 text-[#FF6B00] flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
-                    </svg>
-                    Rajshahi Stadium, Rajshahi Division
-                  </p>
-                </div>
-              </motion.div>
             </motion.aside>
 
             {/* ── RIGHT: Form column ───────────────── */}
@@ -414,20 +389,19 @@ export default function ContactPage() {
               transition={{ duration: 0.6, ease: EASE, delay: 0.2 }}
             >
               <div
-                className="rounded-2xl border border-white/8 p-6 sm:p-8 lg:p-10"
-                style={{ background: "rgba(19,32,80,0.55)", backdropFilter: "blur(14px)" }}
+                className="rounded-2xl border border-white/5 p-6 sm:p-8 lg:p-10 bg-[#132050]/80 backdrop-blur-md shadow-2xl"
               >
                 {/* Card header */}
                 <h2
-                  className="text-white leading-tight mb-1"
+                  className="text-white leading-tight mb-2 uppercase"
                   style={{
                     fontFamily: "var(--font-display, 'Bebas Neue', sans-serif)",
                     fontSize: "clamp(1.6rem, 2.5vw, 2.2rem)",
                   }}
                 >
-                  Send a <span style={{ color: "var(--accent, #FF6B00)" }}>Message</span>
+                  SEND A <span className="text-[#FF5A00]">MESSAGE</span>
                 </h2>
-                <p className="text-white/40 text-sm mb-7">
+                <p className="text-white/40 text-sm mb-8">
                   Fill in the form below and we'll get back to you as soon as possible.
                 </p>
 
@@ -438,7 +412,7 @@ export default function ContactPage() {
                       initial={{ opacity: 0, y: -10, scale: 0.97 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.97 }}
-                      className="mb-6 flex items-start gap-3 p-4 rounded-xl border border-green-500/30 bg-green-500/10"
+                      className="mb-8 flex items-start gap-3 p-4 rounded-xl border border-green-500/30 bg-green-500/10"
                     >
                       <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 flex-shrink-0">
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -457,12 +431,11 @@ export default function ContactPage() {
                 <form
                   ref={formRef}
                   onSubmit={handleSubmit}
-                  className="space-y-4"
+                  className="space-y-5"
                   noValidate
-                  id="contact-form"
                 >
                   {/* Name + Email row */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <FloatingInput
                       id="contact-name" label="Full Name" value={form.name}
                       onChange={set("name")} required autoComplete="name"
@@ -486,9 +459,9 @@ export default function ContactPage() {
                   />
 
                   {/* Privacy */}
-                  <p className="text-white/25 text-[0.72rem] leading-relaxed">
+                  <p className="text-white/30 text-[0.72rem] leading-relaxed pt-2 pb-2">
                     By submitting you agree to our{" "}
-                    <a href="#" className="text-[#FF6B00] hover:underline">Privacy Policy</a>.
+                    <a href="#" className="text-[#FF5A00] hover:underline">Privacy Policy</a>.
                     We never share your data.
                   </p>
 
@@ -496,12 +469,9 @@ export default function ContactPage() {
                   <motion.button
                     type="submit"
                     disabled={status === "sending"}
-                    id="contact-submit"
-                    className="relative w-full flex items-center justify-center gap-3 text-white font-bold text-sm tracking-widest uppercase rounded-xl py-4 px-6 overflow-hidden disabled:opacity-60 disabled:cursor-not-allowed"
-                    style={{ background: "#FF6B00" }}
-                    whileHover={status !== "sending" ? { scale: 1.015 } : {}}
-                    whileTap={status !== "sending" ? { scale: 0.975 } : {}}
-                    transition={{ duration: 0.18 }}
+                    className="relative w-full flex items-center justify-center gap-3 text-white font-bold text-sm tracking-widest uppercase rounded-xl py-4 px-6 bg-[#FF5A00] overflow-hidden disabled:opacity-60 disabled:cursor-not-allowed shadow-[0_4px_15px_rgba(255,90,0,0.25)] hover:shadow-[0_8px_25px_rgba(255,90,0,0.4)] transition-shadow duration-300"
+                    whileHover={status !== "sending" ? { y: -2, scale: 1.01 } : {}}
+                    whileTap={status !== "sending" ? { scale: 0.98 } : {}}
                   >
                     {/* Shimmer */}
                     <motion.span
