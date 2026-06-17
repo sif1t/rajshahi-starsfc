@@ -91,16 +91,17 @@ export default function ContactPage() {
     <>
       <Navbar />
 
-      <div className="bg-[#0a1429] min-h-screen pt-[120px] pb-16 relative overflow-hidden">
+      <div className="bg-[#0a1429] min-h-screen relative overflow-hidden">
         {/* Subtle Background Elements */}
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_20%_10%,rgba(255,90,0,0.06)_0%,transparent_70%)]" />
         
         {/* ── Main Content Container ─────────────────────── */}
-        <div className="relative z-10 max-w-6xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <section className="relative z-10 mx-auto grid min-h-screen w-full max-w-6xl place-items-center px-4 py-[120px] sm:px-6 lg:px-8">
+          <div className="w-full rounded-[30px] border border-white/10 bg-white/[0.02] p-6 shadow-[0_28px_80px_rgba(0,0,0,0.38)] backdrop-blur-xl sm:p-8 lg:p-10">
+            <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-14">
 
             {/* ── LEFT: Info column ────────────────── */}
-            <motion.div variants={stagger} initial="hidden" animate="show" className="space-y-12">
+            <motion.div variants={stagger} initial="hidden" animate="show" className="space-y-10">
               
               {/* Heading Section */}
               <motion.div variants={itemUp}>
@@ -118,7 +119,7 @@ export default function ContactPage() {
               </motion.div>
 
               {/* Info Cards */}
-              <div className="space-y-8">
+              <div className="space-y-7">
                 {contactInfo.map((item) => (
                   <motion.a
                     key={item.label}
@@ -144,7 +145,7 @@ export default function ContactPage() {
               </div>
 
               {/* Follow Us */}
-              <motion.div variants={itemUp} className="pt-4">
+              <motion.div variants={itemUp} className="pt-2">
                 <p className="text-xs font-bold tracking-[0.15em] uppercase text-white/50 mb-6">
                   Follow Us
                 </p>
@@ -173,7 +174,7 @@ export default function ContactPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: EASE, delay: 0.2 }}
             >
-              <div className="bg-white/[0.02] border border-white/10 rounded-2xl p-8 lg:p-10 shadow-2xl backdrop-blur-xl">
+              <div className="bg-[#0d1d3e]/80 border border-white/10 rounded-2xl p-7 lg:p-8 shadow-2xl">
                 <h2 className="text-white leading-tight mb-2 uppercase" style={{ fontFamily: "var(--font-display, 'Bebas Neue', sans-serif)", fontSize: "clamp(2rem, 3vw, 2.5rem)" }}>
                   SEND A <span className="text-[#FF5A00]">MESSAGE</span>
                 </h2>
@@ -299,8 +300,9 @@ export default function ContactPage() {
               </div>
             </motion.div>
 
+            </div>
           </div>
-        </div>
+        </section>
       </div>
 
       <Footer />
