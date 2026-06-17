@@ -27,7 +27,7 @@ const contactInfo = [
       </svg>
     ),
     label: "Stadium / Office",
-    value: "Rajshahi Stadium Complex\nRajshahi Division, Bangladesh",
+    value: "NGI House, 23-24, Tejgaon Industrial Area,\nDhaka, Bangladesh, 1208",
     href: "https://maps.google.com",
   },
   {
@@ -37,8 +37,8 @@ const contactInfo = [
       </svg>
     ),
     label: "Support Email",
-    value: "info@rajshahistarsfc.com",
-    href: "mailto:info@rajshahistarsfc.com",
+    value: "rajshahiwarriors.bpl@gmail.com",
+    href: "rajshahiwarriors.bpl@gmail.com",
   },
 ];
 
