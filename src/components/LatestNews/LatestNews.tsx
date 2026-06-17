@@ -1,7 +1,11 @@
-import Image from "next/image";
-import styles from "./LatestNews.module.css";
+"use client";
 
-const newsItems = [
+import { useState, useCallback, useEffect } from "react";
+import styles from "./LatestNews.module.css";
+import FocusedCard from "./FocusedCard";
+import NewsGalleryModal from "./NewsGalleryModal";
+
+export const newsItems = [
   {
     id: 1,
     category: "Championship",
@@ -59,96 +63,134 @@ const newsItems = [
   },
 ];
 
-function NewsCard({
-  item,
-  variant = "regular",
-}: {
-  item: (typeof newsItems)[0];
-  variant?: "featured" | "side" | "regular";
-}) {
-  return (
-    <article
-      className={`${styles.newsCard} ${styles[`card${variant.charAt(0).toUpperCase() + variant.slice(1)}`]}`}
-      id={`news-card-${item.id}`}
-    >
-      <div className={styles.cardImage}>
-        <Image
-          src={item.fallback}
-          alt={item.title}
-          fill
-          sizes={
-            variant === "featured"
-              ? "(max-width: 768px) 100vw, 60vw"
-              : "(max-width: 768px) 100vw, 40vw"
-          }
-          style={{ objectFit: "cover" }}
-          className={styles.imgEl}
-        />
-        <div className={styles.cardOverlay} />
-        <div className={styles.cardContent}>
-          <span className={styles.category}>{item.category}</span>
-          <h3 className={styles.cardTitle}>{item.title}</h3>
-          <div className={styles.cardMeta}>
-            <span className={styles.cardDate}>{item.date}</span>
-            <span className={styles.cardAuthor}>By {item.author}</span>
-          </div>
-        </div>
-        <div className={styles.hoverArrow} aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-        </div>
-      </div>
-    </article>
-  );
-}
-
 export default function LatestNews() {
+  const [focusedId, setFocusedId] = useState<number | null>(null);
+  const [galleryOpen, setGalleryOpen] = useState(false);
+  const [galleryStartIndex, setGalleryStartIndex] = useState(0);
+
   const featured = newsItems[0];
   const side = newsItems.slice(1, 3);
   const small = newsItems.slice(3);
 
+  const handleFocus = useCallback((id: number) => setFocusedId(id), []);
+  const handleBlur = useCallback(() => setFocusedId(null), []);
+
+  const openGallery = useCallback((id: number) => {
+    const idx = newsItems.findIndex((n) => n.id === id);
+    setGalleryStartIndex(idx >= 0 ? idx : 0);
+    setFocusedId(null);
+    setGalleryOpen(true);
+  }, []);
+
+  const openGalleryFromButton = useCallback(
+    (e: React.MouseEvent) => {
+      e.preventDefault();
+      setGalleryStartIndex(0);
+      setFocusedId(null);
+      setGalleryOpen(true);
+    },
+    []
+  );
+
+  // Dismiss focus on Escape
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && focusedId !== null) setFocusedId(null);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [focusedId]);
+
+  const isSomethingFocused = focusedId !== null;
+
   return (
-    <section className={styles.newsSection} id="news" aria-label="Latest News">
-      <div className={styles.container}>
-        {/* Header */}
-        <div className={styles.sectionHeader}>
-          <div>
-            <p className="section-tag">Latest from the club</p>
-            <h2 className="section-title">
-              Latest <span>News</span>
-            </h2>
+    <>
+      <section
+        className={styles.newsSection}
+        id="news"
+        aria-label="Latest News"
+        /* Clicking the section backdrop dismisses focus */
+        onClick={isSomethingFocused ? handleBlur : undefined}
+      >
+        <div className={styles.container}>
+          {/* Header */}
+          <div className={styles.sectionHeader}>
+            <div>
+              <p className="section-tag">Latest from the club</p>
+              <h2 className="section-title">
+                Latest <span>News</span>
+              </h2>
+            </div>
+            <button
+              onClick={openGalleryFromButton}
+              className={`${styles.viewAllBtn} cursor-pointer bg-transparent border-0 p-0`}
+              id="news-view-all"
+              aria-label="Open full gallery"
+            >
+              View All News
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </button>
           </div>
-          <a href="#" className={styles.viewAllBtn} id="news-view-all">
-            View All News
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
-        </div>
 
-        {/* Mosaic Grid */}
-        <div className={styles.mosaicGrid}>
-          {/* Featured large card */}
-          <div className={styles.featuredArea}>
-            <NewsCard item={featured} variant="featured" />
+          {/* Mosaic Grid */}
+          <div className={styles.mosaicGrid}>
+            {/* Featured large card */}
+            <div className={styles.featuredArea}>
+              <FocusedCard
+                item={featured}
+                variant="featured"
+                isSomethingFocused={isSomethingFocused}
+                isFocused={focusedId === featured.id}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+                onOpenGallery={openGallery}
+              />
+            </div>
+
+            {/* Two side cards stacked */}
+            <div className={styles.sideArea}>
+              {side.map((item) => (
+                <FocusedCard
+                  key={item.id}
+                  item={item}
+                  variant="side"
+                  isSomethingFocused={isSomethingFocused}
+                  isFocused={focusedId === item.id}
+                  onFocus={handleFocus}
+                  onBlur={handleBlur}
+                  onOpenGallery={openGallery}
+                />
+              ))}
+            </div>
           </div>
 
-          {/* Two side cards stacked */}
-          <div className={styles.sideArea}>
-            {side.map((item) => (
-              <NewsCard key={item.id} item={item} variant="side" />
+          {/* Small 3-column row */}
+          <div className={styles.smallGrid}>
+            {small.map((item) => (
+              <FocusedCard
+                key={item.id}
+                item={item}
+                variant="regular"
+                isSomethingFocused={isSomethingFocused}
+                isFocused={focusedId === item.id}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+                onOpenGallery={openGallery}
+              />
             ))}
           </div>
         </div>
+      </section>
 
-        {/* Small 3-column row */}
-        <div className={styles.smallGrid}>
-          {small.map((item) => (
-            <NewsCard key={item.id} item={item} variant="regular" />
-          ))}
-        </div>
-      </div>
-    </section>
+      {/* Full-screen Gallery Modal */}
+      <NewsGalleryModal
+        items={newsItems}
+        isOpen={galleryOpen}
+        onClose={() => setGalleryOpen(false)}
+        initialIndex={galleryStartIndex}
+      />
+    </>
   );
 }
