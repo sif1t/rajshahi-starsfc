@@ -40,16 +40,6 @@ const contactInfo = [
     value: "info@rajshahistarsfc.com",
     href: "mailto:info@rajshahistarsfc.com",
   },
-  {
-    icon: (
-      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
-      </svg>
-    ),
-    label: "Phone Number",
-    value: "+880 123 456 789",
-    href: "tel:+880123456789",
-  },
 ];
 
 const socialLinks = [
@@ -286,7 +276,7 @@ export default function ContactPage() {
             ))}
           </div>
 
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -322,8 +312,8 @@ export default function ContactPage() {
         </div>
 
         {/* ── Two-column body ─────────────────────── */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 xl:gap-16 items-start">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-[22rem_minmax(0,1fr)] gap-10 xl:gap-14 items-start">
 
             {/* ── LEFT: Info column ────────────────── */}
             <motion.aside
