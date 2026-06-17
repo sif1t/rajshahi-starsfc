@@ -275,8 +275,8 @@ export default function ContactPage() {
           ))}
         </div>
 
-        <section className="relative z-10 mx-auto flex min-h-screen w-full max-w-[1320px] items-center px-4 pb-16 pt-[130px] sm:px-6 lg:px-10">
-          <div className="w-full">
+        <section className="relative z-10 mx-auto grid min-h-screen w-full max-w-[1320px] place-items-center px-4 py-[120px] sm:px-6 lg:px-10">
+          <div className="mx-auto flex w-full max-w-[1200px] flex-col justify-center">
             {/* Header */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -304,7 +304,7 @@ export default function ContactPage() {
             </motion.div>
 
             {/* Main panel */}
-            <div className="mt-10 rounded-[28px] border border-white/10 bg-[#091a44]/70 p-4 shadow-[0_35px_90px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:p-6 lg:p-8">
+            <div className="mt-8 rounded-[28px] border border-white/10 bg-[#091a44]/70 p-4 shadow-[0_35px_90px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:p-6 lg:p-8">
               <div className="grid grid-cols-1 items-stretch gap-6 xl:grid-cols-12">
                 {/* ── LEFT: Info column ────────────────── */}
                 <motion.aside
