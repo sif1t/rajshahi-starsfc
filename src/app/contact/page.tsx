@@ -340,7 +340,7 @@ export default function ContactPage() {
       >
         {/* ── Hero strip ─────────────────────────── */}
         <div
-          className="relative overflow-hidden pt-28 pb-20"
+          className="relative overflow-hidden pt-24 sm:pt-28 pb-14 sm:pb-20"
           style={{ background: "var(--primary-mid)" }}
         >
           {/* Decorative orange glow */}
@@ -367,7 +367,7 @@ export default function ContactPage() {
             ))}
           </div>
 
-          <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
             <motion.div
               variants={fadeUp}
               initial="hidden"
@@ -397,8 +397,8 @@ export default function ContactPage() {
         </div>
 
         {/* ── Two-column content ──────────────────── */}
-        <div className="max-w-7xl mx-auto px-6 py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 xl:gap-20 items-start">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-12 xl:gap-20 items-start">
 
             {/* ── LEFT: Contact Info ──────────────── */}
             <motion.aside
@@ -409,14 +409,14 @@ export default function ContactPage() {
               custom={0.15}
             >
               {/* Info cards */}
-              <div className="space-y-4">
+              <div className="space-y-4 sm:space-y-4">
                 {contactInfo.map((item, i) => (
                   <motion.a
                     key={item.label}
                     href={item.href}
                     target={item.href.startsWith("http") ? "_blank" : undefined}
                     rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="group flex items-start gap-4 p-5 rounded-xl border border-white/8 hover:border-[#FF6B00]/40 transition-all duration-300 cursor-pointer"
+                    className="group flex items-start gap-3 sm:gap-4 p-4 sm:p-5 rounded-xl border border-white/8 hover:border-[#FF6B00]/40 transition-all duration-300 cursor-pointer"
                     style={{ background: "rgba(255,255,255,0.03)" }}
                     initial={{ opacity: 0, y: 16 }}
                     animate={{
@@ -432,11 +432,11 @@ export default function ContactPage() {
                     >
                       {item.icon}
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <p className="text-white/40 text-[0.72rem] font-semibold tracking-widest uppercase mb-1">
                         {item.label}
                       </p>
-                      <p className="text-white text-sm font-medium leading-relaxed whitespace-pre-line">
+                      <p className="text-white text-sm font-medium leading-relaxed whitespace-pre-line break-words">
                         {item.value}
                       </p>
                     </div>
@@ -460,7 +460,7 @@ export default function ContactPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={s.name}
-                      className="w-11 h-11 rounded-xl border border-white/10 flex items-center justify-center text-white/50 hover:bg-[#FF6B00] hover:border-[#FF6B00] hover:text-white transition-all duration-250"
+                      className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl border border-white/10 flex items-center justify-center text-white/50 hover:bg-[#FF6B00] hover:border-[#FF6B00] hover:text-white transition-all duration-250"
                       style={{ background: "rgba(255,255,255,0.03)" }}
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{
@@ -513,14 +513,14 @@ export default function ContactPage() {
 
             {/* ── RIGHT: Contact Form ─────────────── */}
             <motion.div
-              className="lg:col-span-3"
+              className="lg:col-span-3 min-w-0"
               variants={fadeRight}
               initial="hidden"
               animate="show"
               custom={0.25}
             >
               <div
-                className="rounded-2xl border border-white/8 p-8 md:p-10"
+                className="rounded-2xl border border-white/8 p-5 sm:p-8 md:p-10"
                 style={{ background: "rgba(19, 32, 80, 0.5)", backdropFilter: "blur(12px)" }}
               >
                 <h2
@@ -558,12 +558,12 @@ export default function ContactPage() {
                 <form
                   ref={formRef}
                   onSubmit={handleSubmit}
-                  className="space-y-5"
+                  className="space-y-4 sm:space-y-5"
                   noValidate
                   id="contact-form"
                 >
                   {/* Row 1: Name + Email */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
                     <FloatingInput
                       id="contact-name"
                       label="Full Name"
@@ -613,7 +613,7 @@ export default function ContactPage() {
                     type="submit"
                     disabled={status === "sending"}
                     id="contact-submit"
-                    className="relative w-full flex items-center justify-center gap-3 bg-[#FF6B00] text-white font-bold text-sm tracking-widest uppercase rounded-lg py-4 px-8 overflow-hidden disabled:opacity-70 disabled:cursor-not-allowed"
+                    className="relative w-full flex items-center justify-center gap-3 bg-[#FF6B00] text-white font-bold text-xs sm:text-sm tracking-widest uppercase rounded-lg py-4 px-6 sm:px-8 overflow-hidden disabled:opacity-70 disabled:cursor-not-allowed"
                     whileHover={status !== "sending" ? { scale: 1.015, backgroundColor: "#FF8C3A" } : {}}
                     whileTap={status !== "sending" ? { scale: 0.98 } : {}}
                     transition={{ duration: 0.2 }}
