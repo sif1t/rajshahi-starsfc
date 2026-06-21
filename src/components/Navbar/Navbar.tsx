@@ -44,7 +44,7 @@ export default function Navbar() {
       >
         <div className={styles.navContainer}>
           {/* Logo */}
-          <Link href="#home" className={styles.logo} aria-label="Rajshahi Stars FC Home">
+          <Link href="/" className={styles.logo} aria-label="Rajshahi Stars FC Home">
             <div className={styles.logoWrapper}>
               <Image
                 src="/images/logo.png"
@@ -52,7 +52,7 @@ export default function Navbar() {
                 width={56}
                 height={56}
                 priority
-                className={styles.logoImg}
+                className={`${styles.logoImg} cursor-pointer`}
               />
             </div>
             <div className={styles.logoText}>
