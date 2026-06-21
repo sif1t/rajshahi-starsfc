@@ -98,7 +98,7 @@ export default function ShopPage() {
     <>
       <Navbar />
 
-      <main className="bg-[#070D1B] min-h-svh pt-48 md:pt-56 pb-24">
+      <main className="bg-[#070D1B] min-h-screen pt-[180px] lg:pt-[220px] pb-32 lg:pb-48">
         
         {/* ── Page Header ──────────────────────────── */}
         <div className="mx-auto max-w-360 text-center px-6 sm:px-8 lg:px-10 mb-12">
@@ -113,7 +113,7 @@ export default function ShopPage() {
         </div>
 
         {/* ── Category Filter Bar ──────────────────── */}
-        <div className="mx-auto max-w-360 px-6 sm:px-8 lg:px-10 mb-12">
+        <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 mb-12">
           <motion.div 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: EASE, delay: 0.1 }}
             className="flex overflow-x-auto pb-4 hide-scrollbar justify-start md:justify-center gap-3"
@@ -140,7 +140,7 @@ export default function ShopPage() {
         </div>
 
         {/* ── Product Grid ─────────────────────────── */}
-        <div className="mx-auto max-w-360 px-6 sm:px-8 lg:px-10">
+        <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeCategory}
@@ -148,13 +148,13 @@ export default function ShopPage() {
               initial="hidden"
               animate="show"
               exit="hidden"
-              className="grid grid-cols-1 justify-items-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 justify-items-center"
             >
               {filteredProducts.map((product) => (
                 <motion.div
                   key={product.id}
                   variants={itemUp}
-                  className="group relative w-full max-w-[320px] bg-[#0A1B3D] rounded-2xl border border-white/10 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,90,0,0.15)] flex flex-col h-full"
+                  className="group relative bg-[#0A1B3D] rounded-2xl border border-white/10 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,90,0,0.15)] flex flex-col w-full max-w-[380px] h-full"
                 >
                   {/* Top Half: Image & Overlay */}
                   <div className="relative aspect-4/5 w-full overflow-hidden bg-[#050914]">
