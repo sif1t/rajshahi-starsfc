@@ -9,6 +9,8 @@ const quickLinks = [
   { label: "Latest News", href: "#news" },
   { label: "Club History", href: "#club" },
   { label: "Contact Us", href: "#contact" },
+  { label: "Shop", href: "/shop" },
+  {}
 ];
 
 const socialLinks = [
