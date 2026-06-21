@@ -11,6 +11,7 @@ const navLinks = [
   { label: "Matches", href: "/#matches" },
   { label: "News", href: "/#news" },
   { label: "Club", href: "/#club" },
+  { label: "Shop", href: "/shop" },
   { label: "Contact", href: "/contact" },
 ];
 
