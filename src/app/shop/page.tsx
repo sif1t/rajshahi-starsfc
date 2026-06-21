@@ -103,8 +103,8 @@ export default function ShopPage() {
         {/* spacer to clear fixed navbar and create a small gap */}
         <div className="h-18 md:h-20" aria-hidden />
 
-        {/* ── Outer Wrapper for the Entire Page Content ──────────────────── */}
-        <div className="mx-auto max-w-360 px-6 w-full mb-20 lg:mb-28">
+        {/* ── Outer Wrapper for the Entire Page Content (match Home gutters) ──────────────────── */}
+        <div className="container w-full mb-20 lg:mb-28">
           
           {/* ── Page Header ──────────────────────────── */}
           <div className="text-center mb-12">
@@ -226,32 +226,15 @@ export default function ShopPage() {
       {/* Hide scrollbar styles inline for convenience */}
       <style dangerouslySetInnerHTML={{__html: `
         .shopGrid {
-          display: flex;
-          flex-wrap: wrap;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 280px));
           justify-content: center;
           gap: 32px;
         }
 
         .shopCard {
-          width: min(100%, 320px);
-        }
-
-        @media (min-width: 640px) {
-          .shopCard {
-            width: min(calc(50% - 16px), 320px);
-          }
-        }
-
-        @media (min-width: 1024px) {
-          .shopCard {
-            width: min(calc(33.333% - 21.5px), 320px);
-          }
-        }
-
-        @media (min-width: 1280px) {
-          .shopCard {
-            width: min(calc(25% - 24px), 320px);
-          }
+          width: 280px;
+          max-width: 100%;
         }
 
         .hide-scrollbar::-webkit-scrollbar {

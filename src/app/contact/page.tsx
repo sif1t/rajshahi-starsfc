@@ -10,8 +10,9 @@ export default function ContactPage() {
     <div className="flex min-h-screen flex-col">
       <Navbar />
 
-      <main className="flex-1 bg-[#070D1B] text-white px-4 sm:px-6 lg:px-8 font-sans selection:bg-[#FF5A00] selection:text-white flex items-center justify-center pt-18 pb-16 min-h-screen">
-        <div className="max-w-7xl w-full flex flex-col items-center justify-center gap-12">
+      <main className="flex-1 bg-[#070D1B] text-white font-sans selection:bg-[#FF5A00] selection:text-white flex items-center justify-center pt-18 pb-16 min-h-screen">
+        <div className="container">
+          <div className="max-w-7xl w-full flex flex-col items-center justify-center gap-12">
         
         {/* Page Header */}
         <motion.div 
@@ -176,6 +177,7 @@ export default function ContactPage() {
           </motion.div>
 
         </div>
+          </div>
         </div>
       </main>
 

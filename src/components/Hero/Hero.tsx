@@ -10,6 +10,10 @@ function seededRandom(seed: number) {
   return x - Math.floor(x);
 }
 
+function fixed(value: number, digits: number) {
+  return Number(value.toFixed(digits));
+}
+
 export default function Hero() {
   const [loaded, setLoaded] = useState(false);
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, mins: 0 });
@@ -19,11 +23,11 @@ export default function Hero() {
   const particles = useMemo(
     () =>
       Array.from({ length: 20 }, (_, i) => ({
-        left: `${seededRandom(i * 3) * 100}%`,
-        top: `${seededRandom(i * 3 + 1) * 80}%`,
-        delay: `${seededRandom(i * 3 + 2) * 4}s`,
-        duration: `${3 + seededRandom(i * 3 + 3) * 4}s`,
-        size: `${2 + seededRandom(i * 3 + 4) * 4}px`,
+        left: `${fixed(seededRandom(i * 3) * 100, 4)}%`,
+        top: `${fixed(seededRandom(i * 3 + 1) * 80, 4)}%`,
+        delay: `${fixed(seededRandom(i * 3 + 2) * 4, 3)}s`,
+        duration: `${fixed(3 + seededRandom(i * 3 + 3) * 4, 3)}s`,
+        size: `${fixed(2 + seededRandom(i * 3 + 4) * 4, 3)}px`,
       })),
     []
   );
@@ -117,7 +121,7 @@ export default function Hero() {
             Buy Tickets
           </a>
           <a href="#news" className={styles.ctaOutline} id="hero-read-more">
-            Latest News
+           Latest News
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
