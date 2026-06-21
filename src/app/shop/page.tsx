@@ -98,49 +98,51 @@ export default function ShopPage() {
     <>
       <Navbar />
 
-      <main className="bg-[#070D1B] min-h-screen pt-[180px] lg:pt-[220px] pb-32 lg:pb-48">
+      <main className="bg-[#070D1B] min-h-screen pt-40 sm:pt-48 pb-24 lg:pb-32">
         
-        {/* ── Page Header ──────────────────────────── */}
-        <div className="mx-auto max-w-360 text-center px-6 sm:px-8 lg:px-10 mb-12">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: EASE }}>
-            <h1 className="text-white uppercase leading-none mb-3" style={{ fontFamily: "var(--font-display, 'Bebas Neue', sans-serif)", fontSize: "clamp(3rem, 6vw, 5rem)" }}>
-              OFFICIAL CLUB <span className="text-[#FF5A00]">SHOP</span>
-            </h1>
-            <p className="text-[#FF5A00] font-bold tracking-[0.2em] uppercase text-sm">
-              WEAR THE COLORS OF THE STARS
-            </p>
-          </motion.div>
-        </div>
+        {/* ── Outer Wrapper for the Entire Page Content ──────────────────── */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mb-20 lg:mb-28">
+          
+          {/* ── Page Header ──────────────────────────── */}
+          <div className="text-center mb-12">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: EASE }}>
+              <h1 className="text-white uppercase leading-none mb-3" style={{ fontFamily: "var(--font-display, 'Bebas Neue', sans-serif)", fontSize: "clamp(3rem, 6vw, 5rem)" }}>
+                OFFICIAL CLUB <span className="text-[#FF5A00]">SHOP</span>
+              </h1>
+              <p className="text-[#FF5A00] font-bold tracking-[0.2em] uppercase text-sm">
+                WEAR THE COLORS OF THE STARS
+              </p>
+            </motion.div>
+          </div>
 
-        {/* ── Category Filter Bar ──────────────────── */}
-        <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 mb-12">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: EASE, delay: 0.1 }}
-            className="flex overflow-x-auto pb-4 hide-scrollbar justify-start md:justify-center gap-3"
-          >
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`relative px-6 py-2.5 rounded-full text-sm font-bold tracking-wider uppercase whitespace-nowrap transition-colors duration-300 ${
-                  activeCategory === cat ? "text-white" : "text-white/50 hover:text-white"
-                }`}
-              >
-                {activeCategory === cat && (
-                  <motion.div
-                    layoutId="activeCategory"
-                    className="absolute inset-0 bg-[#FF5A00] rounded-full"
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  />
-                )}
-                <span className="relative z-10">{cat}</span>
-              </button>
-            ))}
-          </motion.div>
-        </div>
+          {/* ── Category Filter Bar ──────────────────── */}
+          <div className="mb-12">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: EASE, delay: 0.1 }}
+              className="flex overflow-x-auto pb-4 hide-scrollbar justify-start md:justify-center gap-3"
+            >
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`relative px-6 py-2.5 rounded-full text-sm font-bold tracking-wider uppercase whitespace-nowrap transition-colors duration-300 ${
+                    activeCategory === cat ? "text-white" : "text-white/50 hover:text-white"
+                  }`}
+                >
+                  {activeCategory === cat && (
+                    <motion.div
+                      layoutId="activeCategory"
+                      className="absolute inset-0 bg-[#FF5A00] rounded-full"
+                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                    />
+                  )}
+                  <span className="relative z-10">{cat}</span>
+                </button>
+              ))}
+            </motion.div>
+          </div>
 
-        {/* ── Product Grid ─────────────────────────── */}
-        <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12">
+          {/* ── Product Grid ─────────────────────────── */}
           <AnimatePresence mode="wait">
             <motion.div
               key={activeCategory}
@@ -148,19 +150,19 @@ export default function ShopPage() {
               initial="hidden"
               animate="show"
               exit="hidden"
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 justify-items-center"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 sm:gap-10"
             >
               {filteredProducts.map((product) => (
                 <motion.div
                   key={product.id}
                   variants={itemUp}
-                  className="group relative bg-[#0A1B3D] rounded-2xl border border-white/10 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,90,0,0.15)] flex flex-col w-full max-w-[380px] h-full"
+                  className="group relative bg-[#0A1B3D] rounded-2xl border border-white/10 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,90,0,0.15)] flex flex-col justify-between w-full h-full"
                 >
                   {/* Top Half: Image & Overlay */}
-                  <div className="relative aspect-4/5 w-full overflow-hidden bg-[#050914]">
+                  <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#050914] flex-shrink-0">
                     {/* Watermark */}
                     <div className="absolute top-4 left-4 z-10 select-none pointer-events-none">
-                      <span className="text-white/4 font-bold text-7xl leading-none" style={{ fontFamily: "var(--font-display, 'Bebas Neue', sans-serif)" }}>
+                      <span className="text-white/[0.04] font-bold text-7xl leading-none" style={{ fontFamily: "var(--font-display, 'Bebas Neue', sans-serif)" }}>
                         {product.watermark}
                       </span>
                     </div>
@@ -176,17 +178,19 @@ export default function ShopPage() {
                     </div>
 
                     {/* Dark gradient overlay matching the squad card */}
-                    <div className="absolute inset-0 bg-linear-to-t from-[#0A1B3D] to-transparent opacity-90" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A1B3D] to-transparent opacity-90" />
                   </div>
 
                   {/* Bottom Half: Typography & Stats */}
-                  <div className="relative z-20 flex flex-col grow px-6 pb-8 -mt-14 md:-mt-16">
-                    <p className="text-[#2B5A9F] font-black text-[0.65rem] tracking-[0.2em] uppercase mb-1">
-                      {product.category}
-                    </p>
-                    <h3 className="text-white leading-tight mb-5" style={{ fontFamily: "var(--font-display, 'Bebas Neue', sans-serif)", fontSize: "1.75rem" }}>
-                      {product.title}
-                    </h3>
+                  <div className="relative z-20 flex flex-col flex-grow px-6 pb-6 -mt-20">
+                    <div className="flex-grow">
+                      <p className="text-[#2B5A9F] font-black text-[0.65rem] tracking-[0.2em] uppercase mb-1">
+                        {product.category}
+                      </p>
+                      <h3 className="text-white leading-tight mb-5" style={{ fontFamily: "var(--font-display, 'Bebas Neue', sans-serif)", fontSize: "1.75rem" }}>
+                        {product.title}
+                      </h3>
+                    </div>
 
                     {/* Metrics Row */}
                     <div className="flex items-center gap-6 mt-auto mb-6">
@@ -202,7 +206,7 @@ export default function ShopPage() {
                     </div>
 
                     {/* Buy Button */}
-                    <button className="w-full bg-[#FF5A00] hover:bg-[#ff6a1a] text-white font-bold uppercase tracking-widest text-sm py-4 rounded-xl flex items-center justify-center gap-2 transition-colors duration-300 shadow-[0_4px_15px_rgba(255,90,0,0.25)]">
+                    <button className="w-full bg-[#FF5A00] hover:bg-[#ff6a1a] text-white font-bold uppercase tracking-widest text-sm py-4 rounded-xl flex items-center justify-center gap-2 transition-colors duration-300 shadow-[0_4px_15px_rgba(255,90,0,0.25)] flex-shrink-0">
                       <ShoppingBag className="w-4 h-4" />
                       Buy Now
                     </button>
@@ -214,9 +218,7 @@ export default function ShopPage() {
         </div>
       </main>
 
-      <div className="mt-12">
-        <Footer />
-      </div>
+      <Footer />
       
       {/* Hide scrollbar styles inline for convenience */}
       <style dangerouslySetInnerHTML={{__html: `
