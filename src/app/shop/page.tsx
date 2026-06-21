@@ -98,7 +98,7 @@ export default function ShopPage() {
     <>
       <Navbar />
 
-      <main className="bg-[#070D1B] min-h-screen pt-[120px] pb-24">
+      <main className="bg-[#070D1B] min-h-svh pt-37.5 md:pt-42.5 pb-24">
         
         {/* ── Page Header ──────────────────────────── */}
         <div className="text-center px-4 mb-12">
@@ -157,10 +157,10 @@ export default function ShopPage() {
                   className="group relative bg-[#0A1B3D] rounded-2xl border border-white/10 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,90,0,0.15)] flex flex-col h-full"
                 >
                   {/* Top Half: Image & Overlay */}
-                  <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#050914]">
+                  <div className="relative aspect-4/5 w-full overflow-hidden bg-[#050914]">
                     {/* Watermark */}
                     <div className="absolute top-4 left-4 z-10 select-none pointer-events-none">
-                      <span className="text-white/[0.04] font-bold text-7xl leading-none" style={{ fontFamily: "var(--font-display, 'Bebas Neue', sans-serif)" }}>
+                      <span className="text-white/4 font-bold text-7xl leading-none" style={{ fontFamily: "var(--font-display, 'Bebas Neue', sans-serif)" }}>
                         {product.watermark}
                       </span>
                     </div>
@@ -176,11 +176,11 @@ export default function ShopPage() {
                     </div>
 
                     {/* Dark gradient overlay matching the squad card */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A1B3D] to-transparent opacity-90" />
+                    <div className="absolute inset-0 bg-linear-to-t from-[#0A1B3D] to-transparent opacity-90" />
                   </div>
 
                   {/* Bottom Half: Typography & Stats */}
-                  <div className="relative z-20 flex flex-col flex-grow px-6 pb-6 -mt-20">
+                  <div className="relative z-20 flex flex-col grow px-6 pb-8 -mt-14 md:-mt-16">
                     <p className="text-[#2B5A9F] font-black text-[0.65rem] tracking-[0.2em] uppercase mb-1">
                       {product.category}
                     </p>
