@@ -74,7 +74,7 @@ export default function ContactPage() {
 
               
 
-            </div>
+            </div>  
 
             {/* Social Media Block */}
             <div className="bg-[#0C1527] border border-white/5 rounded-none p-8 shadow-lg">
