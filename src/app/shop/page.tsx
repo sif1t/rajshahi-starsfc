@@ -99,9 +99,12 @@ export default function ShopPage() {
       <Navbar />
 
       <main className="bg-[#070D1B] min-h-screen pt-40 sm:pt-48 pb-24 lg:pb-32">
-        
+
+        {/* spacer to clear fixed navbar and create a small gap */}
+        <div className="h-18 md:h-20" aria-hidden />
+
         {/* ── Outer Wrapper for the Entire Page Content ──────────────────── */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mb-20 lg:mb-28">
+        <div className="mx-auto max-w-360 px-6 w-full mb-20 lg:mb-28">
           
           {/* ── Page Header ──────────────────────────── */}
           <div className="text-center mb-12">
@@ -142,7 +145,7 @@ export default function ShopPage() {
             </motion.div>
           </div>
 
-          {/* ── Product Grid ─────────────────────────── */}
+          {/* ── Product Grid (centered) ─────────────────────────── */}
           <AnimatePresence mode="wait">
             <motion.div
               key={activeCategory}
@@ -150,19 +153,19 @@ export default function ShopPage() {
               initial="hidden"
               animate="show"
               exit="hidden"
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 sm:gap-10"
+              className="shopGrid"
             >
               {filteredProducts.map((product) => (
                 <motion.div
                   key={product.id}
                   variants={itemUp}
-                  className="group relative bg-[#0A1B3D] rounded-2xl border border-white/10 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,90,0,0.15)] flex flex-col justify-between w-full h-full"
+                  className="shopCard group relative bg-[#0A1B3D] rounded-2xl border border-white/10 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,90,0,0.15)] flex flex-col justify-between h-full"
                 >
                   {/* Top Half: Image & Overlay */}
-                  <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#050914] flex-shrink-0">
+                  <div className="relative aspect-4/5 w-full overflow-hidden bg-[#050914] shrink-0">
                     {/* Watermark */}
                     <div className="absolute top-4 left-4 z-10 select-none pointer-events-none">
-                      <span className="text-white/[0.04] font-bold text-7xl leading-none" style={{ fontFamily: "var(--font-display, 'Bebas Neue', sans-serif)" }}>
+                      <span className="text-white/4 font-bold text-7xl leading-none" style={{ fontFamily: "var(--font-display, 'Bebas Neue', sans-serif)" }}>
                         {product.watermark}
                       </span>
                     </div>
@@ -178,12 +181,12 @@ export default function ShopPage() {
                     </div>
 
                     {/* Dark gradient overlay matching the squad card */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A1B3D] to-transparent opacity-90" />
+                    <div className="absolute inset-0 bg-linear-to-t from-[#0A1B3D] to-transparent opacity-90" />
                   </div>
 
                   {/* Bottom Half: Typography & Stats */}
-                  <div className="relative z-20 flex flex-col flex-grow px-6 pb-6 -mt-20">
-                    <div className="flex-grow">
+                  <div className="relative z-20 flex flex-col grow px-6 pb-6 -mt-14">
+                    <div className="grow">
                       <p className="text-[#2B5A9F] font-black text-[0.65rem] tracking-[0.2em] uppercase mb-1">
                         {product.category}
                       </p>
@@ -206,7 +209,7 @@ export default function ShopPage() {
                     </div>
 
                     {/* Buy Button */}
-                    <button className="w-full bg-[#FF5A00] hover:bg-[#ff6a1a] text-white font-bold uppercase tracking-widest text-sm py-4 rounded-xl flex items-center justify-center gap-2 transition-colors duration-300 shadow-[0_4px_15px_rgba(255,90,0,0.25)] flex-shrink-0">
+                    <button className="w-full bg-[#FF5A00] hover:bg-[#ff6a1a] text-white font-bold uppercase tracking-widest text-sm py-4 rounded-xl flex items-center justify-center gap-2 transition-colors duration-300 shadow-[0_4px_15px_rgba(255,90,0,0.25)] shrink-0">
                       <ShoppingBag className="w-4 h-4" />
                       Buy Now
                     </button>
@@ -222,6 +225,35 @@ export default function ShopPage() {
       
       {/* Hide scrollbar styles inline for convenience */}
       <style dangerouslySetInnerHTML={{__html: `
+        .shopGrid {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 32px;
+        }
+
+        .shopCard {
+          width: min(100%, 320px);
+        }
+
+        @media (min-width: 640px) {
+          .shopCard {
+            width: min(calc(50% - 16px), 320px);
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .shopCard {
+            width: min(calc(33.333% - 21.5px), 320px);
+          }
+        }
+
+        @media (min-width: 1280px) {
+          .shopCard {
+            width: min(calc(25% - 24px), 320px);
+          }
+        }
+
         .hide-scrollbar::-webkit-scrollbar {
           display: none;
         }
