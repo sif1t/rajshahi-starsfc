@@ -55,10 +55,9 @@ const socialLinks = [
 ];
 
 const sponsors = [
-  { name: "Nabil Group", logo: null },
-  { name: "Star News", logo: null },
-  { name: "Pirtex", logo: null },
-  { name: "BFF", logo: null },
+  { name: "Nabil Group", logo: "/images/sponsors/nabil-group.svg" },
+  { name: "Star News", logo: "/images/sponsors/satr news.png" },
+  { name: "Pirtex", logo: "/images/sponsors/pirtek.png" },
 ];
 
 export default function Footer() {
@@ -158,7 +157,13 @@ export default function Footer() {
           <div className={styles.sponsorsList}>
             {sponsors.map((s) => (
               <div key={s.name} className={styles.sponsorItem}>
-                <span className={styles.sponsorName}>{s.name}</span>
+                {s.logo ? (
+                  <div className={styles.sponsorLogo}>
+                    <Image src={s.logo} alt={s.name} width={160} height={48} style={{ objectFit: "contain" }} />
+                  </div>
+                ) : (
+                  <span className={styles.sponsorName}>{s.name}</span>
+                )}
               </div>
             ))}
           </div>
