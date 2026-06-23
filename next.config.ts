@@ -13,6 +13,11 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "plus.unsplash.com",
       },
+      {
+        // Google profile pictures (used by Google OAuth sign-in)
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+      },
     ],
   },
   turbopack: {
