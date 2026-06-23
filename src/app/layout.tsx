@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import AuthSessionProvider from "@/components/Providers/SessionProvider";
 
 export const metadata: Metadata = {
   title: "Rajshahi Stars FC | Official Website",
@@ -35,7 +36,9 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <AuthSessionProvider>{children}</AuthSessionProvider>
+      </body>
     </html>
   );
 }

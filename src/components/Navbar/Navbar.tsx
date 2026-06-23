@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useSession, signOut } from "next-auth/react";
 import styles from "./Navbar.module.css";
 
 const navLinks = [
@@ -88,6 +89,7 @@ export default function Navbar() {
               </svg>
               Buy Tickets
             </a>
+            <NavAuthButton />
             <button
               className={`${styles.hamburger} ${menuOpen ? styles.open : ""}`}
               onClick={() => setMenuOpen(!menuOpen)}
@@ -138,5 +140,53 @@ export default function Navbar() {
         </div>
       </div>
     </>
+  );
+}
+
+/* ─── Auth button shown in the Navbar ─────────────── */
+function NavAuthButton() {
+  const { data: session, status } = useSession();
+  const [dropOpen, setDropOpen] = useState(false);
+
+  if (status === "loading") return null;
+
+  if (session?.user) {
+    return (
+      <div className="relative hidden md:block">
+        <button
+          onClick={() => setDropOpen(!dropOpen)}
+          className="flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full pl-1 pr-3 py-1 transition-all duration-200"
+        >
+          {session.user.image ? (
+            <Image src={session.user.image} alt={session.user.name ?? ""} width={28} height={28} className="rounded-full" />
+          ) : (
+            <div className="w-7 h-7 rounded-full bg-[#FF5A00] flex items-center justify-center text-white text-xs font-bold">
+              {session.user.name?.[0]?.toUpperCase()}
+            </div>
+          )}
+          <span className="text-white text-xs font-semibold max-w-[80px] truncate">{session.user.name}</span>
+        </button>
+        {dropOpen && (
+          <div className="absolute right-0 mt-2 w-40 bg-[#0C1527] border border-white/10 rounded-xl shadow-2xl overflow-hidden z-50">
+            <Link href="/auth" className="block px-4 py-3 text-sm text-white/70 hover:text-white hover:bg-white/5 transition-colors" onClick={() => setDropOpen(false)}>My Account</Link>
+            <button
+              onClick={() => { setDropOpen(false); signOut({ callbackUrl: "/" }); }}
+              className="w-full text-left px-4 py-3 text-sm text-red-400 hover:bg-red-500/10 transition-colors"
+            >
+              Sign Out
+            </button>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <Link
+      href="/auth"
+      className="hidden md:flex items-center gap-1.5 text-white/70 hover:text-white border border-white/20 hover:border-[#FF5A00] text-xs font-bold tracking-widest uppercase rounded-full px-4 py-2 transition-all duration-200"
+    >
+      Sign In
+    </Link>
   );
 }
